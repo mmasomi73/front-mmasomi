@@ -101,7 +101,6 @@
 
 <script>
 import {onMounted, reactive, watch} from "vue";
-import chalk from "chalk";
 
 export default {
     name: "Main",
@@ -234,11 +233,16 @@ export default {
             });
             document.addEventListener('contextmenu', event => event.preventDefault());
 
-            console.log(chalk.bgGray.green.bold(' من میثم معصومی هستم، '));
-            console.log(chalk.bgGray.green.bold(' کمی برنامه نویسی بلدم، '));
-            console.log(chalk.bgGray.green.bold(' دنبال توسعه دهنده لاراول و ویو هستی؟ '));
-            console.log(chalk.bgGray.green.bold(' باهام تماس بگیر: '));
-            console.log(chalk.bgGray.white.bold(' 09187075470 '));
+            // console.log(chalk.bgGray.green.bold(' من میثم معصومی هستم، '));
+            // console.log(chalk.bgGray.green.bold(' کمی برنامه نویسی بلدم، '));
+            // console.log(chalk.bgGray.green.bold(' دنبال توسعه دهنده لاراول و ویو هستی؟ '));
+            // console.log(chalk.bgGray.green.bold(' باهام تماس بگیر: '));
+            // console.log(chalk.bgGray.white.bold(' 09187075470 '));
+            console.log(' من میثم معصومی هستم، ');
+            console.log(' کمی برنامه نویسی بلدم، ');
+            console.log(' دنبال توسعه دهنده لاراول و ویو هستی؟ ');
+            console.log(' باهام تماس بگیر: ');
+            console.log(' 09187075470 ');
         })
 
         return {
