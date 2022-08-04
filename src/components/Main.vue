@@ -1,5 +1,5 @@
 <template>
-    <div tabindex="0" class="bg-mine-shaft-900 font-sans h-screen w-full flex flex-row justify-center items-center">
+    <div tabindex="0" class="bg-mine-shaft-900 font-sans h-screen w-full flex flex-row justify-center items-center px-4">
         <div class="flex flex-col w-full lg:w-1/2">
             <div class="flex justify-center items-center  border-b border-alto-700 justify-center">
                 <img class="w-72 h-72 rounded-full object-fill" src="/src/assets/imgs/Logo.svg"
