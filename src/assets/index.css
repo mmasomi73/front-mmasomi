@@ -8,3 +8,11 @@
         font-family: 'Vazirmatn', sans-serif;
     }
 }
+
+.ltr{
+    direction: ltr;
+}
+
+.rtl{
+    direction: rtl;
+}
