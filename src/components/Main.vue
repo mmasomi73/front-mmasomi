@@ -102,6 +102,8 @@
 <script>
 import {onMounted, reactive, ref, watch} from "vue";
 import moment from "jalali-moment";
+import lightLogo from "../assets/imgs/light-logo.svg";
+import darkLogo from "../assets/imgs/Logo.svg";
 
 export default {
     name: "Main",
@@ -438,9 +440,9 @@ export default {
         function getLogo(){
             let html = document.querySelector("html");
             if (html.classList.contains("dark")){
-                logo_url.value = '/src/assets/imgs/light-logo.svg';
+                logo_url.value = lightLogo;
             }else{
-                logo_url.value = '/src/assets/imgs/Logo.svg';
+                logo_url.value = darkLogo;
             }
         }
 
