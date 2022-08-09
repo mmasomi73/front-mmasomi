@@ -166,6 +166,9 @@ export default {
                 if (keydown.buffer === '/date') {
                     displayCalendar();
                 }
+                if (keydown.buffer === '/time') {
+                    displayTime();
+                }
                 keydown.to_run = false;
                 keydown.buffer = "";
 
@@ -441,6 +444,22 @@ export default {
             }
         }
 
+        function displayTime(){
+            let date = convertToPersianNumber(moment().format(' jD jMMMM ماه jYYYY'));
+            let time = convertToPersianNumber(moment().format('HH:mm'));
+
+            keydown.shown += '<br>';
+            keydown.shown += '<div class="flex flex-col bg-alto-200 dark:bg-mine-shaft-900 text-mine-shaft-900 dark:text-alto-200 border dark:border-mine-shaft-900 font-vazir rtl text-xs">';
+            keydown.shown += '<div class="flex flex-row p-3">';
+            keydown.shown += 'امروز ' + date;
+            keydown.shown += '</div>';
+            keydown.shown += '<div class="flex flex-row justify-center items-center bg-mine-shaft-900 dark:bg-alto-200 dark:text-mine-shaft-900 text-alto-200 p-3">';
+            keydown.shown +=  time;
+            keydown.shown += '</div>';
+            keydown.shown += '</div>';
+
+        }
+
         watch(() => keydown.action, (currentValue, oldValue) => {
             setTimeout(() => {
                 keydown.action = '';
@@ -494,6 +513,12 @@ export default {
             console.log('%c%s', 'background: #222; color: #bada55;padding:2px 8px;direction: rtl;',' دنبال توسعه دهنده لاراول و ویو هستی؟ ');
             console.log('%c%s', 'background: #222; color: #bada55;padding:2px 8px;direction: rtl;',' باهام تماس بگیر: ');
             console.log('%c 09187075470 ', 'background: #222; color: #bada55');
+
+
+            moment.locale("fa");
+            moment.updateLocale('fa', {
+                months: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
+            });
         })
 
         return {
