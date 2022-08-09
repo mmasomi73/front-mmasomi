@@ -2,8 +2,8 @@
     <div tabindex="0" class="bg-mine-shaft-900 dark:bg-alto-200 font-sans h-screen w-full flex flex-row justify-center items-center px-4">
         <div class="flex flex-col w-full lg:w-1/2">
             <div class="flex justify-center items-center  border-b border-alto-700 justify-center">
-                <img class="w-72 h-72 rounded-full object-fill" :src="logo_url"
-                     alt="لوگوی سایت میثم معصومی">
+                <img v-if="is_dark_mode" class="w-72 h-72 rounded-full object-fill" src="/src/assets/imgs/light-logo.svg" alt="لوگوی سایت میثم معصومی">
+                <img v-if="!is_dark_mode" class="w-72 h-72 rounded-full object-fill" src="/src/assets/imgs/Logo.svg" alt="لوگوی سایت میثم معصومی">
             </div>
             <div class="flex flex-row justify-between items-center ">
                 <div class="flex flex-row items-center">
@@ -108,7 +108,7 @@ import darkLogo from "../assets/imgs/Logo.svg";
 export default {
     name: "Main",
     setup() {
-        const logo_url = ref('/src/assets/imgs/Logo.svg');
+        const is_dark_mode = ref(false);
         const keydown = reactive({
             is_empty: true,
             to_run: false,
@@ -439,11 +439,7 @@ export default {
 
         function getLogo(){
             let html = document.querySelector("html");
-            if (html.classList.contains("dark")){
-                logo_url.value = lightLogo;
-            }else{
-                logo_url.value = darkLogo;
-            }
+            is_dark_mode.value = html.classList.contains("dark");
         }
 
         function displayTime(){
@@ -517,7 +513,7 @@ export default {
             console.log('%c 09187075470 ', 'background: #222; color: #bada55');
 
 
-            moment.locale("fa");
+            // moment.locale("fa");
             moment.updateLocale('fa', {
                 months: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
             });
@@ -525,7 +521,7 @@ export default {
 
         return {
             keydown,
-            logo_url
+            is_dark_mode
         }
 
     }
