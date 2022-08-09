@@ -1,20 +1,20 @@
 <template>
-    <div tabindex="0" class="bg-mine-shaft-900 font-sans h-screen w-full flex flex-row justify-center items-center px-4">
+    <div tabindex="0" class="bg-mine-shaft-900 dark:bg-alto-200 font-sans h-screen w-full flex flex-row justify-center items-center px-4">
         <div class="flex flex-col w-full lg:w-1/2">
             <div class="flex justify-center items-center  border-b border-alto-700 justify-center">
-                <img class="w-72 h-72 rounded-full object-fill" src="/src/assets/imgs/Logo.svg"
+                <img class="w-72 h-72 rounded-full object-fill" :src="logo_url"
                      alt="لوگوی سایت میثم معصومی">
             </div>
             <div class="flex flex-row justify-between items-center ">
                 <div class="flex flex-row items-center">
                     <img class="w-8 h-8 object-fill" src="/src/assets/imgs/pattern.svg" alt="پترن سایت میثم معصومی">
-                    <div class="my-4 bg-mountain-meadow-600 text-alto-200 px-4 py-1 mr-3">
+                    <div class="my-4 bg-mountain-meadow-600 text-alto-200 dark:bg-mine-shaft-900 px-4 py-1 mr-3">
                         م. معصومی
                     </div>
                     <!-- --------= Up =-------- -->
                     <Transition>
                         <div v-show="keydown.action === 'ArrowUp'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -26,7 +26,7 @@
                     <!-- --------= Down =-------- -->
                     <Transition>
                         <div v-show="keydown.action === 'ArrowDown'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -38,7 +38,7 @@
                     <!-- --------= Left =-------- -->
                     <Transition>
                         <div v-show="keydown.action === 'ArrowLeft'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -50,7 +50,7 @@
                     <!-- --------= Right =-------- -->
                     <Transition>
                         <div v-show="keydown.action === 'ArrowRight'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -62,7 +62,7 @@
                     <!-- --------= Plus =-------- -->
                     <Transition>
                         <div v-show="keydown.action === '+'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -74,7 +74,7 @@
                     <!-- --------= Minus =-------- -->
                     <Transition>
                         <div v-show="keydown.action === '-'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
                                 <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
@@ -85,7 +85,7 @@
                     <!-- --------= /,Del,Alt =-------- -->
                     <Transition>
                         <div v-show="keydown.action === '/' || keydown.action === 'Del' || keydown.action === 'Alt'"
-                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 mr-3 w-8 h-8">
+                             class="flex justify-center items-center my-4 bg-mountain-meadow-600 text-alto-200 dark:text-mine-shaft-900 mr-3 w-8 h-8">
                             {{ keydown.action }}
                         </div>
                     </Transition>
@@ -93,28 +93,30 @@
             </div>
         </div>
         <div class="fixed bottom-0 left-0 right-0 px-3 py-2">
-            <div class="flex flex-col items-start text-alto-200 ltr" style="font-family: monospace, monospace;" v-html="keydown.shown">
+            <div class="flex flex-col items-start text-alto-200 dark:text-mine-shaft-900 ltr" style="font-family: monospace, monospace;" v-html="keydown.shown">
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import {onMounted, reactive, watch} from "vue";
+import {onMounted, reactive, ref, watch} from "vue";
+import moment from "jalali-moment";
 
 export default {
     name: "Main",
     setup() {
+        const logo_url = ref('/src/assets/imgs/Logo.svg');
         const keydown = reactive({
             is_empty: true,
             to_run: false,
             key: null,
             action: null,
-            commands: ['/hire-me', '/menu','/clear', '/about', '/contact'],
+            commands: ['/hire-me', '/menu','/clear', '/about', '/contact', '/dark'],
             buffer: '',
             history: ['/hire-me','/menu','/clear','/about','/contact'],
             history_index: 0,
-            shown: '<div class="flex flex-row">$> <span class="text-alto-800 inline ml-2">use /hire-me</span></div>',
+            shown: '<div class="flex flex-row">$> <span class="text-alto-800 inline ml-2">use /menu</span></div>',
         })
 
         function KeyUpHandler(e) {
@@ -157,6 +159,12 @@ export default {
                 if (keydown.buffer === '/clear') {
                     keydown.shown = '';
                     deleteAction();
+                }
+                if (keydown.buffer === '/dark') {
+                    darkModeHandler();
+                }
+                if (keydown.buffer === '/date') {
+                    displayCalendar();
                 }
                 keydown.to_run = false;
                 keydown.buffer = "";
@@ -234,6 +242,54 @@ export default {
             }
         }
 
+        function displayCalendar(){
+            const startDay = moment().clone().startOf('jmonth').startOf('jweek');
+            const endDay = moment().clone().endOf('jmonth').endOf('jweek');
+            let calendar = []
+            var index = startDay.clone();
+            while (index.isBefore(endDay, 'day')) {
+                let week = [];
+                for (let i = 0; i < 7; i++) {
+                    week.push({
+                        date: index.format('jD'),
+                        isToday: moment(index.format('jYYYY-jMM-jDD')).isSame(moment().format('jYYYY-jMM-jDD'), 'day'),
+                        day: index.format('dd')
+                    });
+                    index.add(1, 'day');
+
+                }
+                calendar.push(week);
+            }
+
+            keydown.shown += '<br>';
+            keydown.shown += '<div class="flex flex-col bg-mine-shaft-900 dark:bg-alto-200 p-3 font-vazir rtl text-xs">';
+
+            keydown.shown += '<div class="flex flex-row border-b dark:border-alto-800">';
+            let day_of_week = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
+            for (let j = 0; j < 7; j++){
+                keydown.shown += '<div class="h-6 w-6 m-1 flex flex-1 justify-center items-center">';
+                keydown.shown += day_of_week[j];
+                keydown.shown += '</div>';
+            }
+            keydown.shown += '</div>';
+
+            for (let i = 0; i < calendar.length; i++) {
+                keydown.shown += '<div class="flex flex-row ">';
+                for (let j = 0; j < calendar[i].length; j++) {
+                    if (calendar[i][j].isToday) {
+                        keydown.shown += '<div class="h-6 w-6 m-1 flex flex-1 justify-center items-center bg-mountain-meadow-600 text-alto-200">';
+                    } else {
+                        keydown.shown += '<div class="h-6 w-6 m-1 flex flex-1 justify-center items-center">';
+                    }
+
+                    keydown.shown +=  convertToPersianNumber(calendar[i][j].date);
+                    keydown.shown += '</div>';
+                }
+                keydown.shown += '</div>';
+            }
+            keydown.shown += '</div>';
+        }
+
         function addToHistory(command){
             keydown.history.push(command);
             keydown.history_index = keydown.history.length;
@@ -241,35 +297,35 @@ export default {
 
         function appendHelpCommand(){
             keydown.shown += '<br>';
-            keydown.shown += '<div class="rtl bg-mine-shaft-900 px-4 py-2 font-vazir">';
+            keydown.shown += '<div class="rtl bg-mine-shaft-900 dark:bg-alto-200 px-4 py-2 font-vazir">';
             keydown.shown += '<br>';
             keydown.shown += 'من ';
-            keydown.shown += '<span class="text-alto-200 font-semibold text-mountain-meadow-600">میثم معصومی</span>';
+            keydown.shown += '<span class="text-alto-200 dark:text-mine-shaft-900 font-semibold text-mountain-meadow-600">میثم معصومی</span>';
             keydown.shown += ' هستم، <br>';
             keydown.shown += 'من کمی لاراول و ویو بلدم، اگر اینو دیدی یعنی و دنبال برنامه نویس بودی خوشحال میشم باهام تماس بگیرید.';
             keydown.shown += '🤙';
             keydown.shown += '<br>';
-            keydown.shown += '<span class="text-alto-200 font-semibold text-mountain-meadow-600">Mmasomi@gmail.com</span>';
+            keydown.shown += '<span class="text-alto-200 dark:text-mine-shaft-900 font-semibold text-mountain-meadow-600">Mmasomi@gmail.com</span>';
             keydown.shown += '</div>';
         }
 
         function showMenu(){
             keydown.shown += '<br>';
-            keydown.shown += '<div class="flex flex-col bg-mine-shaft-900 p-3">';
+            keydown.shown += '<div class="flex flex-col bg-mine-shaft-900 dark:bg-alto-200 p-3">';
             keydown.shown += '<div class="flex flex-row ">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">/hire-me</div><div class="ml-3"> Show My Skills if You want Hire Me 🤙. </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">/hire-me</div><div class="ml-3"> Show My Skills if You want Hire Me 🤙. </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row ">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">/clear</div><div class="ml-3"> Clear Screen. </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">/clear</div><div class="ml-3"> Clear Screen. </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row ">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">/menu</div><div class="ml-3"> Show Menu. </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">/menu</div><div class="ml-3"> Show Menu. </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row ">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">/about</div><div class="ml-3"> My Life Story ☕. </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">/about</div><div class="ml-3"> My Life Story ☕. </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row ">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">/contact</div><div class="ml-3"> My Contact Detail 📞. </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">/contact</div><div class="ml-3"> My Contact Detail 📞. </div>';
             keydown.shown += '</div>';
             keydown.shown += '</div>';
             keydown.shown += '<br>';
@@ -277,6 +333,16 @@ export default {
 
         function showHelpMenu(){
             return '<div class="flex flex-row">$> <span class="text-alto-800 inline ml-2">use /menu</span></div>';
+        }
+
+        function darkModeHandler(){
+            let html = document.querySelector("html");
+            if (html.classList.contains("dark")){
+                html.classList.remove("dark");
+            }else{
+                html.classList.add("dark");
+            }
+            getLogo();
         }
 
         function checkKey(key) {
@@ -316,10 +382,10 @@ export default {
 
         function aboutMe(){
             keydown.shown += '<br>';
-            keydown.shown += '<div class="rtl bg-mine-shaft-900 px-4 py-2 font-vazir">';
+            keydown.shown += '<div class="rtl bg-mine-shaft-900 dark:bg-alto-200 px-4 py-2 font-vazir">';
             keydown.shown += '<br>';
             keydown.shown += 'من ';
-            keydown.shown += '<span class="text-alto-200 font-semibold text-mountain-meadow-600">میثم معصومی</span>';
+            keydown.shown += '<span class="text-alto-200 dark:text-mine-shaft-900 font-semibold text-mountain-meadow-600">میثم معصومی</span>';
             keydown.shown += ' هستم، <br>';
             keydown.shown += 'یک جایی بین دهه بیست و سی زندگیمم.';
             keydown.shown += '<br>';
@@ -334,18 +400,18 @@ export default {
 
         function showContact(){
             keydown.shown += '<br>';
-            keydown.shown += '<div class="flex flex-col bg-mine-shaft-900 p-3">';
+            keydown.shown += '<div class="flex flex-col bg-mine-shaft-900 dark:bg-alto-200 p-3">';
             keydown.shown += '<div class="flex flex-row justify-between">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">INSTAGRAM</div><div class="ml-3 text-mountain-meadow-600"> @_mmasomi </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">INSTAGRAM</div><div class="ml-3 text-mountain-meadow-600"> @_mmasomi </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row justify-between">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">TELEGRAM</div><div class="ml-3 text-mountain-meadow-600"> @mmasomi </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">TELEGRAM</div><div class="ml-3 text-mountain-meadow-600"> @mmasomi </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row justify-between">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">TWITTER</div><div class="ml-3 text-mountain-meadow-600"> @mmasomi73 </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">TWITTER</div><div class="ml-3 text-mountain-meadow-600"> @mmasomi73 </div>';
             keydown.shown += '</div>';
             keydown.shown += '<div class="flex flex-row justify-between">';
-            keydown.shown += '<div class="text-alto-200 font-semibold">GMAIL</div><div class="ml-3 text-mountain-meadow-600"> mmasomi73@gmail.com </div>';
+            keydown.shown += '<div class="text-alto-200 dark:text-mine-shaft-900 font-semibold">GMAIL</div><div class="ml-3 text-mountain-meadow-600"> mmasomi73@gmail.com </div>';
             keydown.shown += '</div>';
             keydown.shown += '</div>';
             keydown.shown += '<br>';
@@ -357,6 +423,22 @@ export default {
             keydown.buffer = '';
             keydown.key = '';
             displayHandler();
+        }
+
+        function convertToPersianNumber(number){
+            const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            return String(number).replace(/[0-9]/g, function (w) {
+                return farsiDigits[+w];
+            });
+        }
+
+        function getLogo(){
+            let html = document.querySelector("html");
+            if (html.classList.contains("dark")){
+                logo_url.value = '/src/assets/imgs/light-logo.svg';
+            }else{
+                logo_url.value = '/src/assets/imgs/Logo.svg';
+            }
         }
 
         watch(() => keydown.action, (currentValue, oldValue) => {
@@ -416,6 +498,7 @@ export default {
 
         return {
             keydown,
+            logo_url
         }
 
     }
